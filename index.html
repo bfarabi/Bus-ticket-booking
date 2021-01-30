@@ -28,7 +28,7 @@
     </header>
 
     <!--Booking Section-->
-    <main class="main-content container">
+    <main  class="main-content container">
 
         <div class="booking-content">
             <h1>Mega City Bus</h1>
@@ -36,49 +36,50 @@
         </div>
 
 
-        <div class="booking-form">
+        <div id="mainSection" class="booking-form">
             <h3>Explore By Bus</h3>
 
             <div class="inputs">
                 <div class="input-group">
-                    <label" for="">From</label>
-                    <input class="inp-style" type="text" name="" placeholder="Dhaka">
+                    <label" for="" class="">From</label>
+                    <input class="inp-style " type="text" name="" placeholder="Dhaka">
                 </div>
                 <div class="input-group">
-                    <label" for="">From</label>
-                    <input class="inp-style" type="text" name="" placeholder="Chittagone">
+                    <label" for="" class="">To</label>
+                    <input class="inp-style " type="text" name="" placeholder="Chittagone">
                 </div>
             </div>
 
             <div class="inputs">
                 <div class="input-group">
-                    <label" for="">Departure</label>
-                    <input class="inp-style" type="date" name="">
+                    <label" for="" class="">Departure</label>
+                    <input class="inp-style " type="date" name="">
                 </div>
                 <div class="input-group">
-                    <label for="">Return</label>
-                    <input class="inp-style" type="date" name="">
+                    <label for="" class="">Return</label>
+                    <input class="inp-style " type="date" name="">
                 </div>
             </div>
             <div class="inputs">
                 <div class="input-group f-class">
                 <div >
                     <label for="">First Class ($150)</label>
-                    <input class="inp-style inp-width" id="firstClass-input" type="number" value="0" name="">
+                    <input class="inp-style inp-width " id="firstClass-input" type="number" value="0" name="">
 
                 </div>
                 <div class="plus-minus-btn">
-                 <p><button onclick="handleTicketsChange('firstClass', true)">+</button> 
-                    <button class="minusBtn" onclick="handleTicketsChange('firstClass', false)">-</button></p>
+                 <p><button class="plusBtn" onclick="handleTicketsChange('firstClass', true)"> <i> + </i> </button> 
+                    <button class="minusBtn" onclick="handleTicketsChange('firstClass', false)"> - </button>
+                </p>
                 </div>
             </div>
                 <div class="input-group f-class">
                     <div>
                         <label for="">Economy ($100)</label>
-                        <input class="inp-style inp-width" id="economy-input" type="number" value="0" name="">
+                        <input class="inp-style inp-width " id="economy-input" type="number" value="0" name="">
                     </div>
                     <div class="plus-minus-btn">
-                        <p> <button class="" onclick="handleTicketsChange('economy', true)">+</button> 
+                        <p> <button class="plusBtn" onclick="handleTicketsChange('economy', true)">+</button> 
                             <button class="minusBtn" onclick="handleTicketsChange('economy', false)">-</button> </p>
                     </div>
                 </div>
@@ -90,7 +91,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$ <span id="subTotalAmount">00</span></p>
+                        <p > $ <span id="subTotalAmount" >00</span></p>
                     </div>
                 </div>
 
@@ -99,7 +100,7 @@
                         <p >Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$ <span id="taxAmount">0</span></p>
+                        <p >$ <span id="taxAmount">0</span></p>
                     </div>
                 </div>
                 <hr>
@@ -108,20 +109,73 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$ <span id="totalPrice">00</span></p>
+                        <p >$ <span id="totalPrice">00</span></p>
                     </div>
                 </div>
             </div>
-            <button onclick="myFunction()" class="btn-style">Book Now</button>
+            <button  id="bookButton" class="btn-style">Book Now</button>
+        </div>
+        <div id="confirmForm">
+            <header>
+                 <h2>Successfully purchased Your Ticket!</h2>
+                 <h3>Ticket Details</h3>
+            </header>
+            <table class="table table-bordered">
+                
+                <tbody>
+
+                  <tr>
+                    <td class="strong">From</td>
+                    <td class="user-from"> </td>
+                  </tr>
+
+                  <tr>
+                    <td class="strong">To</td>
+                    <td class="user-to"></td>
+                  </tr>
+
+                  <tr>
+                    <td class="strong">Departure</td>
+                    <td class="user-departure-date"></td>
+                  </tr>
+
+                  <tr>
+                    <td class="strong">Return</td>
+                    <td class="user-return-date"></td>
+                  </tr>
+                  <tr>
+                    <td class="strong">First Class</td>
+                    <td class="user-first-class"></td>
+                  </tr>
+                  <tr>
+                    <td class="strong">Economy</td>
+                    <td class="user-economy-class"></td>
+                  </tr>
+                  <tr class="twopx">
+                    <td class="strong">Subtotal</td>
+                    <td class="user-subtotal"></td>
+                  </tr>
+                  <tr>
+                    <td class="strong">Vat</td>
+                    <td class="user-vat"></td>
+                  </tr>
+                  <tr>
+                    <td class="strong">Total</td>
+                    <td ></td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            <button class="finishBtn" onclick="window.location.reload();" >Ok</button>
         </div>
     </main>
 
     <!--Thank You-->
     <!-- js area start -->
     <script>
-        
+
         function handleTicketsChange(Ticket, Increasing){
-    
+
     const  inputNumber=document.getElementById(Ticket +"-input");
       const parseinput= parseInt(inputNumber.value);
       let inputNewCount = parseinput ;
@@ -132,9 +186,10 @@
             inputNewCount=parseinput-1;
          }
       inputNumber.value= inputNewCount;
-    
+
     calculating();
    }
+
    function calculating(){
        const firstClassInput =document.getElementById('firstClass-input');
        const firstClassCount = parseInt(firstClassInput.value);
@@ -153,6 +208,15 @@
    function myFunction() {
   confirm("Do you want to purchase?");
 }
+
+
+document.querySelector('.btn-style').addEventListener('click', function () {
+    document.querySelector('#mainSection').style.display = 'none';
+    document.querySelector('#confirmForm').style.display = 'block';
+    myFunction();
+
+});
+
     </script>
     <!-- end js area. Thank You -->
 </body>
